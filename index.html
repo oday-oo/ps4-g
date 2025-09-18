@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>GoldHen Self-Host</title>
+</head>
+<body>
+  <h1>GoldHen Loader</h1>
+  <button id="loadButton">تشغيل GoldHen</button>
+
+  <script>
+    document.getElementById('loadButton').addEventListener('click', function() {
+      // تشغيل stage1
+      fetch('stage1.bin').then(r => r.arrayBuffer()).then(stage1 => {
+        console.log('Stage1 loaded');
+
+        // تشغيل stage2
+        fetch('stage2.bin').then(r => r.arrayBuffer()).then(stage2 => {
+          console.log('Stage2 loaded');
+
+          // تشغيل GoldHen
+          fetch('goldhen.bin').then(r => r.arrayBuffer()).then(goldhen => {
+            console.log('GoldHen loaded');
+            alert('GoldHen تم تفعيله بنجاح!'); // رسالة لتأكيد التشغيل
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
